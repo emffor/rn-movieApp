@@ -1,9 +1,10 @@
 import React from 'react';
 
-import { Home } from './src/screens/Home';
+import { Routes } from './src/routes';
 
 import { ThemeProvider } from 'styled-components';
 import theme from './src/styles/theme';
+import * as SplashScreen from 'expo-splash-screen';
 
 import {
   useFonts,
@@ -30,6 +31,7 @@ import {
 } from '@expo-google-fonts/poppins';
 
 export default function App() {
+  SplashScreen.preventAutoHideAsync();
   const [fontsLoaded] = useFonts({
     Inter_400Regular,
     Inter_500Medium,
@@ -49,9 +51,11 @@ export default function App() {
     return <AppLoading />;
   }
 
+  SplashScreen.hideAsync();
+
   return (
     <ThemeProvider theme={theme}>
-      <Home />
+      <Routes />
     </ThemeProvider>
   );
 }
