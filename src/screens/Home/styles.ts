@@ -11,7 +11,6 @@ export const Container = styled.View`
     padding-top: ${getStatusBarHeight() + 20}px;
 `;
 
-export const Title = styled.Text`
-    font-size: 25px;
-    font-family: ${({ theme }) => theme.fonts.tertiary_700};
+export const CarouselContent = styled.View`
+    height: ${RFValue(440)}px;
 `;

@@ -1,22 +1,23 @@
 import React, { useEffect } from 'react';
-import { ActivityIndicator, View } from 'react-native';
-import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { Load } from '../../components/Form/Load';
 import { MoviePoster } from '../../components/MoviePoster';
 import { useMovies } from '../../hooks/useMovies';
+import Carousel from 'react-native-snap-carousel';
 
 import {
   LoadField,
   Container,
-  Title,
+  CarouselContent,
 } from './styles';
+import { Dimensions } from 'react-native';
 
 export function Home(){
   const { moviesInTheaters, isLoading } = useMovies();
   //console.log(moviesInTheaters[4]?.title);
-
-  const { top } = useSafeAreaInsets();
   
+  //It's the same on android and ios
+  const {width: windowWidth} =  Dimensions.get('window'); 
+
   if ( isLoading ) {
     return (
       <LoadField>
@@ -28,9 +29,18 @@ export function Home(){
   return (
     <Container>
       
-      <MoviePoster 
+      {/* <MoviePoster 
         movie={moviesInTheaters[7]}
-      />
+      /> */}
+        <CarouselContent>
+            <Carousel 
+              data={ moviesInTheaters }
+              renderItem={({ item }: any) => <MoviePoster movie={ item } />}
+              sliderWidth={ windowWidth }
+              itemWidth={ 300 }
+            />
+        </CarouselContent>
+
     </Container>
   );
 }

@@ -9,7 +9,9 @@ export const Container = styled.View`
 
 export const ImageContainer = styled.View`
     flex: 1;
-    box-shadow: 0px 1px 1px gray;
+    box-shadow: 2px 5px 10px gray;
+    margin-top: ${RFValue(20)}px;
+    margin-right: ${RFValue(40)}px;
 `;
 
 export const PictureMoviePoster = styled(Image)`
