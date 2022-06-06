@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useMovies } from '../../hooks/useMovies';
 
 import {
   Container,
@@ -6,9 +7,14 @@ import {
 } from './styles';
 
 export function Home(){
+  const { moviesInTheaters } = useMovies();
+  console.log(moviesInTheaters[4]?.title);
+  
+
   return (
     <Container>
-        <Title>Texto</Title>
+        <Title>HomeScreen</Title>
+
     </Container>
   );
 }
