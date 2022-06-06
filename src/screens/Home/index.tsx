@@ -1,6 +1,8 @@
 import React, { useEffect } from 'react';
 import { ActivityIndicator, View } from 'react-native';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { Load } from '../../components/Form/Load';
+import { MoviePoster } from '../../components/MoviePoster';
 import { useMovies } from '../../hooks/useMovies';
 
 import {
@@ -11,7 +13,9 @@ import {
 
 export function Home(){
   const { moviesInTheaters, isLoading } = useMovies();
-  console.log(moviesInTheaters[4]?.title);
+  //console.log(moviesInTheaters[4]?.title);
+
+  const { top } = useSafeAreaInsets();
   
   if ( isLoading ) {
     return (
@@ -23,7 +27,10 @@ export function Home(){
  
   return (
     <Container>
-      <Title>HomeScreen</Title>
+      
+      <MoviePoster 
+        movie={moviesInTheaters[7]}
+      />
     </Container>
   );
 }
